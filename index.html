@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Flip Timer</title>
+  </head>
+  <body>
+    <!-- Live video background -->
+    <div class="live-bg">
+      <video id="bg-video" autoplay muted loop playsinline></video>
+      <div class="bg-overlay"></div>
+    </div>
+
+    <div id="app">
+      <div class="layout-top">
+        <input type="text" id="name-input" placeholder="Enter your name." autocomplete="off" spellcheck="false" />
+        <div id="greeting" style="display: none;"></div>
+      </div>
+      
+      <main class="layout-center">
+        <!-- The flip clock -->
+        <div id="clock" class="clock">
+          <div class="flip-unit" id="m-tens"><span class="val">4</span></div>
+          <div class="flip-unit" id="m-units"><span class="val">5</span></div>
+          <div class="colon">:</div>
+          <div class="flip-unit" id="s-tens"><span class="val">0</span></div>
+          <div class="flip-unit" id="s-units"><span class="val">0</span></div>
+        </div>
+
+        <!-- Play Button -->
+        <button id="btn-play-pause" class="play-btn">
+          <svg id="icon-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          <svg id="icon-pause" viewBox="0 0 24 24" style="display:none;"><path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </button>
+
+        <!-- Subtle controls that appear below -->
+        <div class="time-controls">
+           <button class="subtle-btn" id="btn-minus">-15m</button>
+           <button class="subtle-btn" id="btn-reset">Reset</button>
+           <button class="subtle-btn" id="btn-plus">+15m</button>
+        </div>
+      </main>
+
+      <!-- Bottom row: category pills -->
+      <div class="layout-bottom">
+        <div class="category-pills" id="category-pills">
+          <button class="pill active" data-query="sea turtle ocean">🐢 Sea Life</button>
+          <button class="pill" data-query="mountain nature landscape">🏔️ Mountains</button>
+          <button class="pill" data-query="city lights timelapse">🌆 Cityscape</button>
+          <button class="pill" data-query="forest trees nature">🌲 Forest</button>
+          <button class="pill" data-query="galaxy stars night sky">🌌 Galaxy</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
