@@ -193,6 +193,31 @@ pills.forEach(pill => {
   });
 });
 
+// ─── Screen Wake Lock ─────────────────────────────────────────────────────────
+let wakeLock = null;
+
+async function requestWakeLock() {
+  if ('wakeLock' in navigator) {
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeLock.addEventListener('release', () => {
+        console.log('Screen Wake Lock released');
+      });
+      console.log('Screen Wake Lock acquired');
+    } catch (err) {
+      console.error("Wake Lock error: " + err.name + ", " + err.message);
+    }
+  }
+}
+
+requestWakeLock();
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') {
+    requestWakeLock();
+  }
+});
+
 // ─── Init ─────────────────────────────────────────────────────────────────────
 updateDisplay();
 // Load default category on start
